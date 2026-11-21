@@ -177,6 +177,7 @@
 
   // Magnetic CTAs, specular card tilt, fluid blend cursor, and contextual labels.
   if (motionAllowed && finePointer) {
+    root.classList.add('has-custom-cursor');
     const cursorDot = document.createElement('span');
     cursorDot.className = 'motion-cursor-dot';
     cursorDot.setAttribute('aria-hidden', 'true');

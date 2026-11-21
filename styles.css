@@ -178,3 +178,145 @@ body{background-image:radial-gradient(ellipse at 82% 2%,color-mix(in srgb,var(--
 @media(max-width:900px) and (hover:none){
   .project:hover{translate:0 var(--card-drift,0px);box-shadow:0 8px 28px rgba(20,37,27,.065)}
 }
+
+/* Final responsive polish: clip decorative overflow without breaking sticky scroll scenes. */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+body {
+  min-width: 0;
+}
+
+/* Soft, restrained glass surfaces over the existing royal-green palette. */
+.site-header {
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  -webkit-backdrop-filter: blur(16px) saturate(145%);
+  backdrop-filter: blur(16px) saturate(145%);
+  border-bottom-color: color-mix(in srgb, var(--line) 72%, transparent);
+}
+
+.site-header.is-scrolled {
+  background: color-mix(in srgb, var(--bg) 62%, transparent);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  backdrop-filter: blur(24px) saturate(160%);
+}
+
+.art-card,
+.art-note {
+  background: color-mix(in srgb, var(--surface) 78%, transparent);
+  border-color: color-mix(in srgb, var(--surface) 70%, var(--line));
+  -webkit-backdrop-filter: blur(16px) saturate(135%);
+  backdrop-filter: blur(16px) saturate(135%);
+}
+
+.art-card {
+  border-radius: 26px;
+  box-shadow: 0 26px 70px rgba(20, 37, 27, .12), inset 0 1px 0 rgba(255, 255, 255, .7);
+}
+
+.project {
+  border-radius: 22px;
+  background: color-mix(in srgb, var(--surface) 86%, transparent);
+  box-shadow: 0 16px 48px rgba(20, 37, 27, .055), inset 0 1px 0 rgba(255, 255, 255, .5);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  backdrop-filter: blur(14px) saturate(120%);
+}
+
+.skill-card {
+  background: color-mix(in srgb, var(--surface) 66%, transparent);
+  -webkit-backdrop-filter: blur(12px) saturate(125%);
+  backdrop-filter: blur(12px) saturate(125%);
+}
+
+.state-card {
+  border-radius: 26px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  box-shadow: 0 24px 64px rgba(20, 37, 27, .08), inset 0 1px 0 rgba(255, 255, 255, .55);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
+  backdrop-filter: blur(18px) saturate(135%);
+}
+
+.state-card .state-visuals {
+  border-radius: 25px 0 0 25px;
+}
+
+.beyond-card {
+  border-radius: 22px;
+}
+
+.project-open {
+  border-radius: 50%;
+  transition: background .3s var(--ease), color .3s var(--ease), border-color .3s var(--ease), transform .4s var(--ease);
+}
+
+.project-open:hover {
+  transform: rotate(90deg) scale(1.06);
+}
+
+.art-star,
+.tiny-star,
+.beyond-symbol,
+.journey-stamp b {
+  transform-origin: center;
+  transition: transform .45s var(--ease), color .35s var(--ease);
+}
+
+.beyond-card:hover .beyond-symbol,
+.journey-stamp:hover b {
+  transform: rotate(18deg) scale(1.16);
+}
+
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .has-custom-cursor,
+  .has-custom-cursor body,
+  .has-custom-cursor a,
+  .has-custom-cursor button {
+    cursor: none;
+  }
+
+  .has-custom-cursor .motion-cursor-ring.is-hover {
+    mix-blend-mode: difference;
+  }
+}
+
+@media (max-width: 680px) {
+  .hero-art {
+    right: 0;
+  }
+
+  .showcase-pin {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .showcase-sticky {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .project {
+    border-radius: 18px;
+  }
+
+  .state-card .state-visuals {
+    border-radius: 17px 17px 0 0;
+  }
+
+  .state-card {
+    border-radius: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-open,
+  .art-star,
+  .tiny-star,
+  .beyond-symbol,
+  .journey-stamp b {
+    transition: none !important;
+  }
+}
