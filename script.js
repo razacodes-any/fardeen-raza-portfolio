@@ -137,8 +137,9 @@
     const timelineRect = timeline.getBoundingClientRect();
     const itemRects = timelineItems.map(item => item.getBoundingClientRect());
     const visualRects = projectVisuals.map(visual => visual.getBoundingClientRect());
-    const showcaseTravel = Math.max(1, showcaseRect.height - (viewportHeight - 104));
-    const showcaseProgress = clamp01((104 - showcaseRect.top) / showcaseTravel);
+    const showcaseTop = window.innerWidth <= 680 ? 72 : 104;
+    const showcaseTravel = Math.max(1, showcaseRect.height - (viewportHeight - showcaseTop));
+    const showcaseProgress = clamp01((showcaseTop - showcaseRect.top) / showcaseTravel);
     const trackDistance = Math.max(0, projectTrack.scrollWidth - showcaseSticky.clientWidth);
     const timelineProgress = clamp01((viewportHeight * .72 - timelineRect.top) / Math.max(1, timelineRect.height));
     cachePointerBounds();
@@ -146,7 +147,7 @@
     // Writes follow all geometry reads so scroll updates do not force synchronous layout.
     progressBar.style.width = `${percent}%`;
     header.classList.toggle('is-scrolled', scrollY > 80);
-    if (window.innerWidth > 900) {
+    if (motionAllowed) {
       projectTrack.style.setProperty('--track-x', `${-trackDistance * showcaseProgress}px`);
       showcase.style.setProperty('--backdrop-drift', `${showcaseProgress * 220}px`);
       projects.forEach(project => {

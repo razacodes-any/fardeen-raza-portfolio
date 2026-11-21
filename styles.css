@@ -94,6 +94,49 @@ html[data-theme="dark"]{color-scheme:dark;--bg:#151a16;--surface:#202720;--ink:#
   .main-nav,.main-nav.is-open,.main-nav>a,.main-nav.is-open>a,.menu-toggle span{transition:none!important;transform:none!important;clip-path:none!important;}
 }
 
+/* Bring the pinned horizontal project story to tablets and phones. */
+@media(max-width:900px){
+  .showcase-pin{height:calc(100svh + 85vw);margin:0 0 20px}
+  .showcase-sticky{position:sticky;top:104px;height:calc(100svh - 132px);min-height:0;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end}
+  .showcase-backdrop{display:block;top:3%;left:-2%;font-size:clamp(54px,12vw,112px)}
+  .showcase-hint{display:flex;top:5%;right:0;font-size:9px}
+  .project-list{display:flex!important;position:relative;width:max-content;height:78%;gap:18px;transform:translate3d(var(--track-x,0px),0,0)!important;align-items:stretch}
+  .project{flex:0 0 min(84vw,720px);height:100%;min-height:0;grid-template-columns:.9fr 1.1fr;grid-template-rows:1fr;translate:0 var(--card-drift,0px)!important}
+  .project-visual{min-height:0;height:auto}
+  .project-info{min-height:0;padding:clamp(22px,4vw,38px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:none}
+  .project-info::-webkit-scrollbar{display:none}
+  .project-info h3{font-size:clamp(34px,5vw,48px);margin:22px 0 10px}
+  .project-info>p{font-size:12px;line-height:1.6}
+  .project-tags{gap:5px;margin-top:14px}
+  .project-tags span{font-size:8px;padding:5px 8px}
+}
+@media(max-width:680px){
+  .showcase-pin{height:calc(100svh + 85vw);margin:0 0 12px}
+  .showcase-sticky{top:72px;height:calc(100svh - 132px)}
+  .showcase-backdrop{font-size:clamp(48px,13vw,78px);top:4%}
+  .showcase-hint{top:5%;font-size:8px}
+  .project-list{height:83%;gap:16px}
+  .project{flex:0 0 min(86vw,560px);grid-template-columns:1fr;grid-template-rows:minmax(0,42%) minmax(0,58%);border-radius:3px}
+  .project-visual{min-height:0}
+  .project-info{padding:14px 17px 48px;justify-content:flex-start}
+  .project-meta{font-size:7px;gap:8px;letter-spacing:.04em}
+  .project-info h3{font-size:clamp(30px,8vw,39px);margin:11px 0 7px}
+  .project-info>p{font-size:11px;line-height:1.45}
+  .project-tags{gap:4px;margin-top:9px}
+  .project-tags span{font-size:7px;padding:4px 7px}
+  .project-open{right:13px;bottom:12px;width:30px;height:30px}
+  .project[aria-expanded=true] .project-extra{max-height:180px;margin-top:10px}
+  .project-extra p{font-size:10px;line-height:1.45;margin:0 0 8px}
+}
+@media(max-width:900px) and (prefers-reduced-motion:reduce){
+  .showcase-pin{height:auto;margin:0 0 20px}
+  .showcase-sticky{position:relative;top:auto;height:auto;min-height:0;overflow:visible;display:block}
+  .showcase-backdrop,.showcase-hint{display:none}
+  .project-list{display:grid!important;width:auto;height:auto;transform:none!important;gap:20px}
+  .project{height:auto;min-height:0;flex:initial;translate:none!important;grid-template-columns:1fr;grid-template-rows:auto auto}
+  .project-visual{min-height:280px}
+}
+
 
 /* Refined porcelain / ink / ultramarine palette */
 :root{color-scheme:light;--bg:#f7f8f5;--surface:#fff;--ink:#131c2b;--muted:#616c7b;--line:#dee3e9;--lime:#d8fb70;--coral:#3559e8;--lav:#e7e9ff;--blue:#c7e8e1;--shadow:0 28px 80px rgba(19,28,43,.1);--binary:#3559e8}
@@ -127,3 +170,11 @@ body{background-image:radial-gradient(ellipse at 82% 2%,color-mix(in srgb,var(--
 :root{--sans:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--display:"Avenir Next",Avenir,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--mono:SFMono-Regular,Consolas,"Liberation Mono",monospace}
 .status-dot{animation:status-pulse 2s ease-in-out infinite}@keyframes status-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}.project{transition:transform .35s var(--ease)}.project:hover{box-shadow:0 8px 28px rgba(20,37,27,.065);translate:0 calc(var(--card-drift,0px) - 3px)}.site-header.is-scrolled{backdrop-filter:blur(12px)}
 @media(prefers-reduced-motion:reduce){.status-dot{animation:none}}
+
+@media(max-width:900px){
+  .project{transform:translateY(28px)!important}
+  .project.is-visible{transform:translateY(0)!important}
+}
+@media(max-width:900px) and (hover:none){
+  .project:hover{translate:0 var(--card-drift,0px);box-shadow:0 8px 28px rgba(20,37,27,.065)}
+}
