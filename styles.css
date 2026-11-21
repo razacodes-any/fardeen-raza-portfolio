@@ -51,6 +51,49 @@ html[data-theme="dark"]{color-scheme:dark;--bg:#151a16;--surface:#202720;--ink:#
 .binary-cursor-canvas{position:fixed;inset:0;z-index:78;pointer-events:none;display:block;contain:strict}
 @media(prefers-reduced-motion:reduce){.binary-cursor-canvas{display:none!important}}
 
+/* Mobile navigation: a compact curtain reveal with a staggered link entrance. */
+@media(max-width:680px){
+  .main-nav{
+    display:flex;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transform:translate3d(0,-14px,0) scale(.985);
+    clip-path:inset(0 0 100% 0);
+    transform-origin:top center;
+    box-shadow:0 18px 26px rgba(17,28,20,.08);
+    will-change:opacity,transform,clip-path;
+    transition:opacity .24s var(--ease),transform .42s var(--ease),clip-path .46s cubic-bezier(.76,0,.24,1),visibility 0s linear .46s;
+  }
+  .site-header.is-scrolled .main-nav{top:60px}
+  .main-nav.is-open{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+    transform:translate3d(0,0,0) scale(1);
+    clip-path:inset(0 0 0 0);
+    transition:opacity .24s var(--ease),transform .42s var(--ease),clip-path .46s cubic-bezier(.76,0,.24,1),visibility 0s;
+  }
+  .main-nav>a{
+    opacity:0;
+    transform:translate3d(0,-7px,0);
+    transition:opacity .22s var(--ease),transform .36s var(--ease);
+  }
+  .main-nav.is-open>a{opacity:1;transform:translate3d(0,0,0)}
+  .main-nav.is-open>a:nth-child(1){transition-delay:.04s}
+  .main-nav.is-open>a:nth-child(2){transition-delay:.08s}
+  .main-nav.is-open>a:nth-child(3){transition-delay:.12s}
+  .main-nav.is-open>a:nth-child(4){transition-delay:.16s}
+  .main-nav.is-open>a:nth-child(5){transition-delay:.20s}
+  .main-nav.is-open>a:nth-child(6){transition-delay:.24s}
+  .menu-toggle span{transform-origin:center;transition:transform .35s var(--ease),opacity .2s var(--ease)}
+  .menu-toggle[aria-expanded=true] span:first-child{transform:translateY(3px) rotate(45deg)}
+  .menu-toggle[aria-expanded=true] span:last-child{transform:translateY(-3px) rotate(-45deg)}
+}
+@media(prefers-reduced-motion:reduce){
+  .main-nav,.main-nav.is-open,.main-nav>a,.main-nav.is-open>a,.menu-toggle span{transition:none!important;transform:none!important;clip-path:none!important;}
+}
+
 
 /* Refined porcelain / ink / ultramarine palette */
 :root{color-scheme:light;--bg:#f7f8f5;--surface:#fff;--ink:#131c2b;--muted:#616c7b;--line:#dee3e9;--lime:#d8fb70;--coral:#3559e8;--lav:#e7e9ff;--blue:#c7e8e1;--shadow:0 28px 80px rgba(19,28,43,.1);--binary:#3559e8}
