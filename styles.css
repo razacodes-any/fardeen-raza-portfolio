@@ -320,3 +320,5 @@ body {
     transition: none !important;
   }
 }
+
+.project-links{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
