@@ -1,4 +1,3 @@
----
 # Fardeen Raza — Personal Portfolio
 
 A personal portfolio website built to bring together my introduction, technical interests, selected projects, and contact information.
@@ -102,4 +101,3 @@ The included `vercel.json` configures clean URLs and security response headers.
 ---
 
 *Designed and built with curiosity.*
----
