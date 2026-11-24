@@ -321,4 +321,5 @@ body {
   }
 }
 
-.project-links{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.project-demo{display:inline-flex;align-items:center;gap:8px;margin-top:18px;padding:9px 13px;border:1px solid var(--line);border-radius:999px;font-size:12px;font-weight:600;transition:border-color .2s,background .2s}
+.project-demo:hover{border-color:var(--coral);background:color-mix(in srgb,var(--surface) 75%,var(--coral) 25%)}
